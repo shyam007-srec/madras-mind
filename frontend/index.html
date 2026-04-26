@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neural-Grid Chennai</title>
+    <meta
+      name="description"
+      content="Prototype dashboard for Anna Salai traffic pressure monitoring and D3QN control."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/frontend/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb bg-orb-a"></div>
+    <div class="bg-orb bg-orb-b"></div>
+    <div class="shell">
+      <header class="hero card">
+        <div>
+          <div class="eyebrow">Neural-Grid Chennai</div>
+          <h1>Anna Salai traffic control, reimagined as a live command surface.</h1>
+          <p class="hero-copy">
+            A polished prototype dashboard for corridor pressure, occupancy, phase state,
+            and neighbor inference across five junctions.
+          </p>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card spotlight">
+            <span>Global Pressure</span>
+            <strong id="global-pressure">0.00</strong>
+            <small>Updated from the live simulation stream</small>
+          </div>
+          <div class="metric-card">
+            <span>Live Junctions</span>
+            <strong id="junction-count">5</strong>
+            <small>Anna Salai corridor nodes</small>
+          </div>
+          <div class="metric-card">
+            <span>Sensor Blind Nodes</span>
+            <strong id="blind-count">0</strong>
+            <small>Adversarial dropout events</small>
+          </div>
+        </div>
+      </header>
+
+      <main class="grid-layout">
+        <section class="card corridor-card">
+          <div class="section-head">
+            <div>
+              <h2>Corridor Pressure Map</h2>
+              <p>Each node reflects the current queue pressure and occupancy load.</p>
+            </div>
+            <div class="legend">
+              <span><i class="dot low"></i>Low</span>
+              <span><i class="dot mid"></i>Moderate</span>
+              <span><i class="dot high"></i>Critical</span>
+            </div>
+          </div>
+          <div class="corridor" id="corridor"></div>
+        </section>
+
+        <aside class="stack">
+          <section class="card panel-card">
+            <div class="section-head compact">
+              <div>
+                <h2>Control View</h2>
+                <p>Phase state, queue, and live safety masking indicators.</p>
+              </div>
+            </div>
+            <div class="insight-grid" id="insight-grid"></div>
+          </section>
+
+          <section class="card panel-card">
+            <div class="section-head compact">
+              <div>
+                <h2>Audit Trail</h2>
+                <p>Dashboard-side event feed for the latest pressure snapshots.</p>
+              </div>
+            </div>
+            <div class="audit-log" id="audit-log"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <template id="junction-template">
+      <article class="junction-card">
+        <div class="junction-top">
+          <div>
+            <h3></h3>
+            <span class="junction-status"></span>
+          </div>
+          <div class="phase-pill"></div>
+        </div>
+        <div class="pressure-row">
+          <div>
+            <span>Pressure</span>
+            <strong class="pressure-value"></strong>
+          </div>
+          <div class="pressure-bar"><span></span></div>
+        </div>
+        <div class="junction-meta">
+          <div><span>Queue</span><strong class="queue-value"></strong></div>
+          <div><span>Occupancy</span><strong class="occupancy-value"></strong></div>
+          <div><span>Neighbor Pressure</span><strong class="neighbor-pressure-value"></strong></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="/frontend/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+traci          # The bridge between Python and SUMO
+libsumo        # For faster simulation execution
+torch          # For the Dueling Double DQN architecture
+numpy          # For state vector manipulation
+matplotlib     # For plotting the "Pressure" reduction graphs
+pandas         # For analyzing the CSV output of simulation runs
+fastapi        # FastAPI backend for live traffic metrics
+uvicorn        # ASGI server for the FastAPI backend
